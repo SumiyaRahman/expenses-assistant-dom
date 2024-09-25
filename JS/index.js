@@ -1,17 +1,33 @@
+function getInputValue(id) {
+    return parseFloat(document.getElementById(id).value);
+};
+
+function showError(id){
+    document.getElementById(id).classList.remove("hidden");
+};
+
 // getting all the values
 let count = 0;
 const calculateButton = document.getElementById("calculate");
 
 // add event listener for calculate button
 calculateButton.addEventListener("click", function () {
-  count += 1;  
-  const income = parseFloat(document.getElementById("income").value);
-  const software = parseFloat(document.getElementById("software").value);
-  const courses = parseFloat(document.getElementById("courses").value);
-  const internet = parseFloat(document.getElementById("internet").value);
+  count += 1; 
+
+// get value from function
+const income = getInputValue("income");
+const software = getInputValue("software");
+const courses = getInputValue("courses");
+const internet = getInputValue("internet");
 
   const totalExpenses = software + courses + internet;
   const balance = income - totalExpenses;
+
+  if(totalExpenses > income){
+    showError("logic-error");
+    // document.getElementById("logic-error").classList.remove("hidden");
+    return;
+  }
 
   const totalExpensesElement = document.getElementById("total-expenses");
   totalExpensesElement.innerText = totalExpenses.toFixed(2);
@@ -41,17 +57,18 @@ calculateButton.addEventListener("click", function () {
 // add event listener for savings button
 const calculateSavings = document.getElementById("calculate-savings");
 calculateSavings.addEventListener("click", function () {
-  const savingPercentace = parseFloat(document.getElementById("savings").value);
+  const savingpercentage = parseFloat(document.getElementById("savings").value);
 
-  const income = parseFloat(document.getElementById("income").value);
-  const software = parseFloat(document.getElementById("software").value);
-  const courses = parseFloat(document.getElementById("courses").value);
-  const internet = parseFloat(document.getElementById("internet").value);
+  // get value from function
+const income = getInputValue("income");
+const software = getInputValue("software");
+const courses = getInputValue("courses");
+const internet = getInputValue("internet");
 
   const totalExpenses = software + courses + internet;
   const balance = income - totalExpenses;
 
-  const savingAmount = (savingPercentace * balance) / 100;
+  const savingAmount = (savingpercentage * balance) / 100;
 
   const remainingBalance = balance - savingAmount;
 
@@ -112,4 +129,61 @@ assistantTab.addEventListener('click', function(){
           );
         historyTab.classList.add("text-gray-600"); 
         document.getElementById("history-section").classList.add("hidden");
+});
+
+// live validation for input
+
+// income
+document.getElementById("income").addEventListener('input', function(){
+    const inputValue = parseFloat(document.getElementById("income").value);
+
+    if(isNaN(inputValue) || inputValue <= 0){
+        showError("income-error");
+        // document.getElementById("income-error").classList.remove("hidden");
+        return;
+    }
+});
+
+// software
+document.getElementById("software").addEventListener('input', function(){
+    const inputValue = parseFloat(document.getElementById("software").value);
+
+    if(isNaN(inputValue) || inputValue <= 0){
+        showError("software-error");
+        // document.getElementById("software-error").classList.remove("hidden");
+        return;
+    }
+});
+
+// courses
+document.getElementById("courses").addEventListener('input', function(){
+    const inputValue = parseFloat(document.getElementById("courses").value);
+
+    if(isNaN(inputValue) || inputValue <= 0){
+        showError("courses-error");
+        // document.getElementById("courses-error").classList.remove("hidden");
+        return;
+    }
+});
+
+// internet
+document.getElementById("internet").addEventListener('input', function(){
+    const inputValue = parseFloat(document.getElementById("internet").value);
+
+    if(isNaN(inputValue) || inputValue <= 0){
+        showError("internet-error");
+        // document.getElementById("internet-error").classList.remove("hidden");
+        return;
+    }
+});
+
+// savings
+document.getElementById("savings").addEventListener('input', function(){
+    const inputValue = parseFloat(document.getElementById("savings").value);
+
+    if(isNaN(inputValue) || inputValue <= 0){
+        showError("savings-error");
+        // document.getElementById("internet-error").classList.remove("hidden");
+        return;
+    }
 });
