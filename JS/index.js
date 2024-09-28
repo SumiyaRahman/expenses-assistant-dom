@@ -1,12 +1,3 @@
-function getInputValue(id) {
-    return parseFloat(document.getElementById(id).value);
-};
-
-function showError(id){
-    document.getElementById(id).classList.remove("hidden");
-};
-
-// getting all the values
 let count = 0;
 const calculateButton = document.getElementById("calculate");
 
@@ -25,7 +16,6 @@ const internet = getInputValue("internet");
 
   if(totalExpenses > income){
     showError("logic-error");
-    // document.getElementById("logic-error").classList.remove("hidden");
     return;
   }
 
