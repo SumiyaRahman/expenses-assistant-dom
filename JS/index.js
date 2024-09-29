@@ -30,7 +30,7 @@ const internet = getInputValue("internet");
 
 //   history
   const historyItem = document.createElement("div");
-  historyItem.className = "bg-white p-3 rounded-md border-l-2 border-indigo-500";
+  historyItem.className = "bg-white p-3 rounded-md border-l-2 border-green-500";
 
   historyItem.innerHTML = `
    <p class = "text-xs text-gray-500">Serial: ${count}</p>
@@ -80,8 +80,8 @@ historyTab.addEventListener("click", function () {
   historyTab.classList.add(
     "text-white",
     "bg-gradient-to-r",
-    "from-blue-500",
-    "to-purple-600"
+    "from-[#642B73]",
+    "to-[#C6426E]"
   );
   historyTab.classList.remove("text-gray-600"); 
   
@@ -90,8 +90,8 @@ historyTab.addEventListener("click", function () {
   assistantTab.classList.remove(
     "text-white",
     "bg-gradient-to-r",
-    "from-blue-500",
-    "to-purple-600"
+    "from-[#642B73]",
+    "to-[#C6426E]"
     );
   assistantTab.classList.add("text-gray-600");
 
@@ -103,8 +103,8 @@ assistantTab.addEventListener('click', function(){
     assistantTab.classList.add(
         "text-white",
         "bg-gradient-to-r",
-        "from-blue-500",
-        "to-purple-600"
+        "from-[#642B73]",
+        "to-[#C6426E]"
         );
         assistantTab.classList.remove("text-gray-600");
 
@@ -114,8 +114,8 @@ assistantTab.addEventListener('click', function(){
         historyTab.classList.remove(
             "text-white",
             "bg-gradient-to-r",
-            "from-blue-500",
-            "to-purple-600"
+            "from-[#642B73]",
+            "to-[#C6426E]"
           );
         historyTab.classList.add("text-gray-600"); 
         document.getElementById("history-section").classList.add("hidden");
